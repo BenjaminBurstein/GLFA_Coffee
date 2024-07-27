@@ -1,0 +1,94 @@
+{
+  "kind": "collectionType",
+  "collectionName": "up_users",
+  "info": {
+    "name": "user",
+    "description": "",
+    "singularName": "user",
+    "pluralName": "users",
+    "displayName": "User"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "username": {
+      "type": "string",
+      "minLength": 3,
+      "unique": true,
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true,
+      "minLength": 6
+    },
+    "provider": {
+      "type": "string"
+    },
+    "password": {
+      "type": "password",
+      "minLength": 3,
+      "private": true,
+      "searchable": false,
+      "required": true
+    },
+    "resetPasswordToken": {
+      "type": "string",
+      "private": true,
+      "searchable": false
+    },
+    "confirmationToken": {
+      "type": "string",
+      "private": true,
+      "searchable": false
+    },
+    "blocked": {
+      "type": "boolean",
+      "default": false
+    },
+    "role": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.role",
+      "inversedBy": "users"
+    },
+    "firstname": {
+      "type": "string",
+      "required": true,
+      "minLength": 2
+    },
+    "lastname": {
+      "type": "string",
+      "required": true,
+      "minLength": 2
+    },
+    "net_salary": {
+      "type": "integer",
+      "default": 0,
+      "required": true,
+      "min": 0
+    },
+    "brut_salary": {
+      "type": "integer",
+      "required": true,
+      "min": 0,
+      "default": 0
+    },
+    "Status": {
+      "type": "enumeration",
+      "enum": [
+        "Pdg",
+        "Co-pdg",
+        "Mairie",
+        "Actionnaire",
+        "Drh",
+        "Responsable",
+        "Employer",
+        "Stagiaire"
+      ],
+      "default": "Employer",
+      "required": true
+    }
+  }
+}
